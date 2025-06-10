@@ -91,7 +91,9 @@ def withdraws():
                 print()
                 print('Confirming.')
                 time.sleep(1)
+                print()
                 print("Confirmed.") 
+                print(f'You have successfuly withdrawn ${withdraw}')
                 print(f"Your new balance: ${balance}")
                 print()
                 file = open("transactions.txt", "a")
@@ -156,25 +158,30 @@ def pin():
   # The main function of the progect designed for user interactions [how the ATM and the user interact].
 def atm():
  
-  print()
-  print("Welcome to the ATM!")
-
-  print()
-     
+ 
  # The various services the ATM has to offer.
-  print('1. Check Balance')
-  print('2. Deposit')
-  print('3. Withdraw')
-  print('4. Transaction History')
-  print('5. Exit')
+  choices()
 
     # The actions that will take place as a result of the choices that the user will pick.
   while True:
 
        
       choice = input("Please choose an option:")
-    
-      if choice == '5':
+       
+     # Calling the check_balance function
+      if choice == '1':
+           check_balance()
+     # Calling the deposit function
+      elif choice == '2':
+           deposits()
+     # Calling the withdraws function
+      elif choice == '3':
+          withdraws()
+     # Calling the transaction_history function
+      elif choice == '4':
+            transaction_history()
+             
+      elif choice == '5':
             print()
             print('Exiting.')
             time.sleep(1)
@@ -185,21 +192,14 @@ def atm():
             print()
             print('Invalid choice! Please try again.')
             choices()
-# Calling the deposit function
-      elif choice == '2':
-           deposits()
-# Calling the withdraws function
-      elif choice == '3':
-          withdraws()
-# Calling the check_balance function
-      elif choice == '1':
-           check_balance()
-# Calling the transaction_history function
-      elif choice == '4':
-            transaction_history()
-             
 
 
-# Calling the function.
+
+
+# Calling the function
 pin()
     
+'''
+if __name__=='__main__':
+        pin()
+'''
